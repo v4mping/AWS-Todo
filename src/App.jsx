@@ -102,7 +102,7 @@ export default function App() {
                   transition={{ duration: 0.2 }}
                   className="flex justify-between items-center bg-gray-50 p-3 rounded-lg shadow-sm mb-2"
                 >
-                  <span className="text-gray-700">{todo.text}</span>
+                  <span className="text-gray-700">{todo.description}</span>
                   <button
                     onClick={() => deleteTodo(todo.id)}
                     className="text-red-500 hover:text-red-700 font-medium"
