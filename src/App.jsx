@@ -18,6 +18,7 @@ export default function App() {
     try {
       const res = await fetch(`${API_URL}/todos`);
       const data = await res.json();
+      console.log("fetched Todos: ", data);
       setTodos(data);
     } catch (err) {
       console.error(err);
