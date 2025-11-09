@@ -38,7 +38,9 @@ export default function App() {
       const res = await fetch(`${API_URL}/todos`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: newTodo }),
+        body: JSON.stringify({ 
+          text: newTodo, 
+          day: selectedDay }),
       });
       if (!res.ok) throw new Error("Error adding todo");
       setNewTodo("");
