@@ -68,6 +68,13 @@ export default function App() {
     }
   };
 
+  const groupTodos = todos.reduce((acc, todo) => {
+    const day = todo.day || "Unscheduled";
+    if (!acc[day]) acc[day] = [];
+    acc[day].push(todo);
+    return acc;
+  }, {});
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10 px-4">
       <Toaster position="top-center" />
@@ -111,31 +118,36 @@ export default function App() {
 
         <div>
           <AnimatePresence>
-            {todos.length > 0 ? (
-              todos.map((todo) => (
-                <motion.div
-                  key={todo.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex justify-between items-center bg-gray-50 p-3 rounded-lg shadow-sm mb-2"
-                >
-                  <span className="text-gray-700">{todo.description}</span>
-                  <button
-                    onClick={() => deleteTodo(todo.id)}
-                    className="text-red-500 hover:text-red-700 font-medium"
-                  >
-                    Delete
-                  </button>
-                </motion.div>
-              ))
-            ) : (
-              <p className="text-center text-gray-500 mt-6">
-                No todos yet — add one!
-              </p>
-            )}
-          </AnimatePresence>
+  {Object.keys(groupedTodos).length > 0 ? (
+    Object.keys(groupedTodos).map((day) => (
+      <div key={day} className="mb-6">
+        <h2 className="text-xl font-semibold text-gray-800 mb-3 border-b pb-1">
+          {day}
+        </h2>
+        {groupedTodos[day].map((todo) => (
+          <motion.div
+            key={todo.id}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="flex justify-between items-center bg-gray-50 p-3 rounded-lg shadow-sm mb-2"
+          >
+            <span className="text-gray-700">{todo.description}</span>
+            <button
+              onClick={() => deleteTodo(todo.id)}
+              className="text-red-500 hover:text-red-700 font-medium"
+            >
+              Delete
+            </button>
+          </motion.div>
+        ))}
+      </div>
+    ))
+  ) : (
+    <p className="text-center text-gray-500 mt-6">No todos yet — add one!</p>
+  )}
+</AnimatePresence>
         </div>
       </div>
 
