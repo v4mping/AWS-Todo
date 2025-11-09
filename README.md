@@ -1,6 +1,6 @@
 # 📝 AWS Serverless Todo App
 
-A simple full-stack Todo application built using **React (Vite)** for the frontend and **AWS Lambda, API Gateway, and DynamoDB** for the backend.  
+A simple full-stack Todo application I built to familiarize myself with a new tech stack using **React (Vite)** for the frontend and **AWS Lambda, API Gateway, and DynamoDB** for the backend.  
 Deployed via **AWS Amplify** (frontend) and **AWS Lambda + API Gateway** (backend).
 
 ---
