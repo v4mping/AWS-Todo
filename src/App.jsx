@@ -7,6 +7,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 export default function App() {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
+  const [selectedDay, setSelectedDay] = useState("Monday");
   const [loading, setLoading] = useState(false);
 
   // Fetch all todos
@@ -81,6 +82,22 @@ export default function App() {
             className="flex-1 border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
             placeholder="Add a new todo..."
           />
+
+          <select 
+            value={selectedDay}
+            onChange={(e) => setSelectedDay(e.target.value)}
+            className="boreder rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            >
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+          </select>
+
+
           <button
             onClick={addTodo}
             disabled={loading}
