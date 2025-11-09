@@ -118,13 +118,13 @@ export default function App() {
 
         <div>
           <AnimatePresence>
-  {Object.keys(groupedTodos).length > 0 ? (
-    Object.keys(groupedTodos).map((day) => (
+  {Object.keys(groupTodos).length > 0 ? (
+    Object.keys(groupTodos).map((day) => (
       <div key={day} className="mb-6">
         <h2 className="text-xl font-semibold text-gray-800 mb-3 border-b pb-1">
           {day}
         </h2>
-        {groupedTodos[day].map((todo) => (
+        {groupTodos[day].map((todo) => (
           <motion.div
             key={todo.id}
             initial={{ opacity: 0, y: 10 }}
